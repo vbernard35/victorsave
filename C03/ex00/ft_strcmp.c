@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 15:46:03 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/14 18:55:09 by vbernard         ###   ########.fr       */
+/*   Created: 2019/09/02 16:32:15 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/05 17:12:33 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int		ft_strcmp(char *s1, char *s2)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 	{
-		write(1, &str[i], 1);
+		if (s1[i] != s2[i])
+		{
+			return (s1[i] - s2[i]);
+		}
 		i++;
 	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argv;
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	return (s1[i] - s2[i]);
 }

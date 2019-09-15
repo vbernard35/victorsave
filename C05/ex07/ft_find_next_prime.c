@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 15:46:03 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/14 18:55:09 by vbernard         ###   ########.fr       */
+/*   Created: 2019/09/11 13:35:53 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/13 13:36:20 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_prime(int nb)
 {
-	int i;
+	int j;
 
-	i = 0;
-	while (str[i])
+	j = 2;
+	if (nb <= 1)
+		return (0);
+	while (j <= (nb / j))
 	{
-		write(1, &str[i], 1);
-		i++;
+		if (nb % j == 0)
+			return (0);
+		j++;
 	}
-	write(1, "\n", 1);
+	return (1);
 }
 
-int		main(int argc, char **argv)
+int	ft_find_next_prime(int nb)
 {
-	(void)argv;
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	while (1)
+	{
+		if (ft_prime(nb))
+			return (nb);
+		nb++;
+	}
 }

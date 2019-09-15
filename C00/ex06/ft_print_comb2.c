@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 15:46:03 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/14 18:55:09 by vbernard         ###   ########.fr       */
+/*   Created: 2019/08/28 20:37:18 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/06 15:30:54 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+void	ft_putchar(char c)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
+	write(1, &c, 1);
 }
 
-int		main(int argc, char **argv)
+void	ft_print_comb2(void)
 {
-	(void)argv;
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	int a;
+	int b;
+
+	a = 0;
+	while (a <= 98)
+	{
+		b = a + 1;
+		while (b <= 99)
+		{
+			ft_putchar(a / 10 + '0');
+			ft_putchar(a % 10 + '0');
+			ft_putchar(' ');
+			ft_putchar(b / 10 + '0');
+			ft_putchar(b % 10 + '0');
+			if (!(a == 98 && b == 99))
+			{
+				write(1, ", ", 2);
+			}
+			b++;
+		}
+		a++;
+	}
 }

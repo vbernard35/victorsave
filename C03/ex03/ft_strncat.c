@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 15:46:03 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/14 18:55:09 by vbernard         ###   ########.fr       */
+/*   Created: 2019/09/03 21:12:02 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/05 18:01:50 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int i;
+	unsigned int i;
+	unsigned int j;
 
 	i = 0;
-	while (str[i])
+	j = 0;
+	while (dest[i] != '\0')
 	{
-		write(1, &str[i], 1);
 		i++;
 	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argv;
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	while (src[j] != '\0' && j < nb)
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 15:46:03 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/14 18:55:09 by vbernard         ###   ########.fr       */
+/*   Created: 2019/09/04 09:59:29 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/05 11:53:39 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+char	*ft_strstr(char *str, char *to_find)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while (str[i])
+	j = 1;
+	if (to_find[0] == '\0')
+		return (str);
+	while (str[i] != '\0')
 	{
-		write(1, &str[i], 1);
+		if (to_find[0] == str[i])
+		{
+			while (to_find[j] == str[i + j] && to_find[j] != '\0')
+			{
+				j++;
+			}
+			if (to_find[j] == '\0')
+				return (&str[i]);
+		}
 		i++;
 	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argv;
-	(void)argc;
-	ft_putstr(argv[0]);
 	return (0);
 }

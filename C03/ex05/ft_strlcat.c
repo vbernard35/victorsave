@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 15:46:03 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/14 18:55:09 by vbernard         ###   ########.fr       */
+/*   Created: 2019/09/04 16:17:48 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/05 19:39:20 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int i;
+	unsigned int i;
+	unsigned int j;
+	unsigned int a;
 
 	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
+	j = 0;
+	a = 0;
+	while (dest[i] != '\0')
 		i++;
+	while (src[j] != '\0')
+		j++;
+	if (size <= i)
+		j = j + size;
+	else
+		j = j + i;
+	while (src[a] != '\0' && i + 1 < size)
+	{
+		dest[i] = src[a];
+		i++;
+		a++;
 	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argv;
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	dest[i] = '\0';
+	return (j);
 }
