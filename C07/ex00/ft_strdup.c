@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 08:31:22 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/16 09:16:22 by vbernard         ###   ########.fr       */
+/*   Created: 2019/09/13 12:21:21 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/16 12:15:16 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putstr(char *str)
+int		ft_strlen(char *src)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
+	while (src[i])
 		i++;
-	}
-	write(1, "\n", 1);
+	return (i);
 }
 
-int		main(int argc, char **argv)
+char	*ft_strdup(char *src)
 {
-	int i;
+	char	*tab;
+	int		i;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	tab = malloc(sizeof(*tab) * (ft_strlen(src) + 1));
+	while (src[i])
 	{
-		ft_putstr(argv[i]);
+		tab[i] = src[i];
 		i++;
 	}
-	return (0);
+	tab[i] = '\0';
+	return (tab);
 }

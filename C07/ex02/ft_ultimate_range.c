@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 08:31:22 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/16 09:16:22 by vbernard         ###   ########.fr       */
+/*   Created: 2019/09/13 19:27:36 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/16 13:41:28 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putstr(char *str)
+int	ft_len(int min, int max)
 {
 	int i;
 
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
+	i = max - min;
+	return (i);
 }
 
-int		main(int argc, char **argv)
+int	ft_ultimate_range(int **range, int min, int max)
 {
-	int i;
+	int		*tab;
+	int		i;
+	int		scale;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	scale = min;
+	if (ft_len(min, max) <= 0)
+		return (0);
+	if (!(tab = malloc(sizeof(*tab) * (ft_len(min, max) - 1))))
+		return (-1);
+	while (scale < max)
 	{
-		ft_putstr(argv[i]);
+		tab[i] = scale;
 		i++;
+		scale++;
 	}
-	return (0);
+	tab[i] = '\0';
+	*range = tab;
+	return (max - min);
 }
