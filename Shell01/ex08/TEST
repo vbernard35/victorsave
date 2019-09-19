@@ -1,0 +1,4 @@
+sed 's/\'\\\"\?\|/012345/g' | sed 's/mrdoc/012345/g' 
+export $FT_NBR1=\'?"\"'
+export $FT_NBR2=rcrdmddd
+$ echo "$FT_NBR1+$FT_NBR2"

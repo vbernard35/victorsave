@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_boolean.h                                       :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 10:46:03 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/18 13:42:30 by vbernard         ###   ########.fr       */
+/*   Created: 2019/09/02 10:35:35 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/03 16:07:02 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BOOLEAN_H
-# define FT_BOOLEAN_H
-# include <unistd.h>
-# define TRUE 0
-# define FALSE 1
+int	ft_str_is_printable(char *str)
+{
+	int i;
 
-typedef int	t_bool;
-# define SUCCESS 0
-# define EVEN_MSG  "I have an even number of arguments.\n"
-# define ODD_MSG  "I have an odd number of arguments.\n"
-# define EVEN(nbr) nbr % 2 == 0
-#endif
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 32 && str[i] <= 126)
+		{
+			i++;
+		}
+		else
+		{
+			return (0);
+		}
+	}
+	return (1);
+}

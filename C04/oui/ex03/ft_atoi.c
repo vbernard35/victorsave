@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_boolean.h                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbernard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 10:46:03 by vbernard          #+#    #+#             */
-/*   Updated: 2019/09/18 13:42:30 by vbernard         ###   ########.fr       */
+/*   Created: 2019/09/05 12:30:09 by vbernard          #+#    #+#             */
+/*   Updated: 2019/09/19 11:18:15 by vbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BOOLEAN_H
-# define FT_BOOLEAN_H
-# include <unistd.h>
-# define TRUE 0
-# define FALSE 1
+int	ft_atoi(char *str)
+{
+	int i;
+	int k;
+	int nb;
 
-typedef int	t_bool;
-# define SUCCESS 0
-# define EVEN_MSG  "I have an even number of arguments.\n"
-# define ODD_MSG  "I have an odd number of arguments.\n"
-# define EVEN(nbr) nbr % 2 == 0
-#endif
+	k = 1;
+	i = 0;
+	nb = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
+			|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+		i++;
+	while (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+		{
+			k = k * -1;
+		}
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - 48);
+		i++;
+	}
+	return (nb * k);
+}
